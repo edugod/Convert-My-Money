@@ -1,7 +1,6 @@
 //instalar npm init pra iniciar o projeto
 console.log("teste"); // funcionando
 //instalar o express e o ejs
-
 // preciso importar o express
 const express = require("express");
 
@@ -23,7 +22,11 @@ app.get("/", (req, res) => {
 
 //----------------------------------------------------------------
 //---------------------------até aqui era só pra fazer tudo bumbar
+const convert = require('./lib/convert')
+
 app.get('/cotacao', (req,res) => {
+	const { cotacao, quantidade } = req.query
+	console.log(cotacao, quantidade)
 	res.render('cotacao')
 })
 
