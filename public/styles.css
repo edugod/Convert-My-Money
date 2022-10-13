@@ -8,5 +8,18 @@ h1 img {
     margin: 20px;
 }
 input {
-    display: block;
+
+    text-align: center;
+    font-size: 20px;
+    padding: 4px;
+    margin: 4px;
+    border: 1px solid #000000;
+    background: #fdfdfd;
+}
+button {
+    border: 1px solid #000000;
+    background-color: #D8D8D8;
+    margin: 5px;
+    font-size: 20px;
+    padding: 10px;
 }

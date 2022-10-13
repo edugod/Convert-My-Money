@@ -1,8 +1,9 @@
 <%- include('header') %>
-<form>
-<input placeholder="Cotação">
-<input placeholder="Quantidade de USD">
-<input type="button" value="Converter!">
-
+<form method="GET" action="/cotacao">
+    <!---Tem que ser GET pra dai eu posso pegar os valores de cotacao e quantidade de USD, com POST não da. e pq action cotacao? pq assim ele manda pra /cotacao os valores que eu coloquei lá-->
+	<!--Agora eu preciso ir lá no meu index.js criar o app.get/cotacao-->
+	<input name="cotacao" placeholder="Cotação" /><br />
+	<input name="quantidade" placeholder="Quantidade de USD" /><br />
+	<button>Converter!</button>
 </form>
 <%- include('footer') %>

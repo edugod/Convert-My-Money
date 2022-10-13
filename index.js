@@ -21,6 +21,14 @@ app.get("/", (req, res) => {
 	res.render("home");
 });
 
+//----------------------------------------------------------------
+//---------------------------até aqui era só pra fazer tudo bumbar
+app.get('/cotacao', (req,res) => {
+	res.render('cotacao')
+})
+
+
+
 // ouvir a aplicação na porta 3000
 app.listen(3000, (err) => {
 	if (err) {
