@@ -23,3 +23,8 @@ button {
     font-size: 20px;
     padding: 10px;
 }
+.result {
+    padding: 10px;
+    border: 1px solid #D8D8D8;
+    background: #fdfdfd
+}

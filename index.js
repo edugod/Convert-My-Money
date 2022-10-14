@@ -22,15 +22,26 @@ app.get("/", (req, res) => {
 
 //----------------------------------------------------------------
 //---------------------------até aqui era só pra fazer tudo bumbar
-const convert = require('./lib/convert')
+const convert = require("./lib/convert");
 
-app.get('/cotacao', (req,res) => {
-	const { cotacao, quantidade } = req.query
-	console.log(cotacao, quantidade)
-	res.render('cotacao')
-})
-
-
+app.get("/cotacao", (req, res) => {
+	const { cotacao, quantidade } = req.query;
+	//eu fiz uam coisa bem legal para conseguir pegar o cotacao e quantidade
+	//dando um console.log(req) aparece um monte de coisa, mas na propriedade .query, estava lá os dados :)
+	if (cotacao && quantidade) {
+		const conversao = convert.convert(cotacao, quantidade);
+		res.render("cotacao", {
+			error: false,
+			cotacao: convert.toMoney(cotacao),
+			quantidade: convert.toMoney(quantidade),
+			conversao: convert.toMoney(conversao),
+		});
+	} else {
+		res.render("cotacao"),{
+				error: "Valores inválidos",
+			};
+	}
+});
 
 // ouvir a aplicação na porta 3000
 app.listen(3000, (err) => {
