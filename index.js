@@ -38,8 +38,8 @@ app.get("/cotacao", (req, res) => {
 		});
 	} else {
 		res.render("cotacao"),{
-				error: "Valores inválidos",
-			};
+				error: "Valores inválidos"
+		};
 	}
 });
 
