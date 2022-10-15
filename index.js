@@ -10,19 +10,28 @@ const app = express();
 //como precisamos publicar ele, desde o começo já vamos fazer o tratamento do "path"
 const path = require("path");
 
+//---------- requerindo as funções para converter
+const convert = require("./lib/convert");
+
+//--------- precisamos pegar a cotacao antes de iniciar os cálculos
+const apiBCB = require('./lib/api.bcb')
+
 //setando o viewengine ejs
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views")); // isso é pra hora que a gente for upar ele
 app.use(express.static(path.join(__dirname, "public"))); //um lugar para utilizar css e outros arqruivos
 
 //pegar / e renderizar home
-app.get("/", (req, res) => {
-	res.render("home");
+app.get("/", async (req, res) => {
+	cotacao = await apiBCB.getCotacao()
+	res.render("home", {
+		cotacao
+	});
 });
 
 //----------------------------------------------------------------
 //---------------------------até aqui era só pra fazer tudo bumbar
-const convert = require("./lib/convert");
+
 
 app.get("/cotacao", (req, res) => {
 	const { cotacao, quantidade } = req.query;
